@@ -10,12 +10,13 @@ pipeline {
         sh 'npm install'
       }
     }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
-      }
+  }
+  post {
+    failure {
+      echo 'Processing failed'
+    }
+    success {
+      echo 'Processing succeeded'
     }
   }
 }
