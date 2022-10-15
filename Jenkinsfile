@@ -18,7 +18,7 @@ pipeline {
     success {
       step([$class: 'AWSEBDeploymentBuilder', credentialId: 'aws_mehroz', zeroDowntime: false,
       awsRegion: 'ap-south-1', applicationName: 'Sample', environmentName: 'Sample-env',
-      bucketName: 'elasticbeanstalk-ap-south-1-360464920616', rootObject: '.', includes: '**/*', excludes: ''])
+      bucketName: 'elasticbeanstalk-ap-south-1-360464920616', rootObject: '.', includes: '**/*', excludes: '', versionLabelFormat: "$gcs", versionDescriptionFormat: "$gcs"])
     }
   }
 }
