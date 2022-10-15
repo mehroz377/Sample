@@ -1,22 +1,24 @@
+/* groovylint-disable LineLength */
 pipeline {
   agent any
-    
-  tools {nodejs "node"}
-    
+
+  tools { nodejs 'node' }
+
   stages {
-     
     stage('Build') {
       steps {
         sh 'npm install'
       }
-    }  
+    }
   }
   post {
     failure {
       echo 'Processing failed'
     }
     success {
-      echo 'Processing succeeded'
+      step([$class: 'AWSEBDeploymentBuilder', credentialId: 'aws_mehroz', zeroDowntime: false,
+      awsRegion: 'ap-south-1', applicationName: 'Sample', environmentName: 'Sample-env',
+      bucketName: 'elasticbeanstalk-ap-south-1-360464920616', rootObject: '.', includes: '**/*', excludes: ''])
     }
   }
 }
