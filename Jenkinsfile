@@ -10,6 +10,10 @@ pipeline {
         sh 'npm install'
       }
     }
+    
+    stage('test'){
+      //test
+    }
   }
   post {
     failure {
