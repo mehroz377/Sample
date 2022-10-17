@@ -1,6 +1,6 @@
 /*************Test******************/
 var test = require('unit.js');
-var str = 'ello, world!';
+var str = 'Hello, world!';
 
 test.string(str).startsWith('Hello');
 
