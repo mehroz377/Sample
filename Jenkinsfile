@@ -22,7 +22,7 @@ pipeline {
       echo 'Processing failed'
     }
     success {
-      step([$class: 'AWSEBDeploymentBuilder', credentialId: 'aws_mehroz', zeroDowntime: false,
+      step([$class: 'AWSEBDeploymentBuilder', credentialId: 'aws_mehroz', zeroDowntime: false, skipEnvironmentUpdates: true,
       awsRegion: 'ap-south-1', applicationName: 'Sample', environmentName: 'Sample-env',
       bucketName: 'elasticbeanstalk-ap-south-1-360464920616', rootObject: '.', includes: '**/*', excludes: '', versionLabelFormat: "dev-${BUILD_NUMBER}", versionDescriptionFormat: "dev-${BUILD_NUMBER}-env"])
     }
